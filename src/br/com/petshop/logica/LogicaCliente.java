@@ -21,9 +21,8 @@ public class LogicaCliente {
 		System.out.print(MensagensNaTela.cpf);
 		String auxCPF = Principal.s.nextLine();
 
-		if(Cliente.consultarClienteJaCadastrado(listaDeClientes, auxCPF) == true){
+		if(Cliente.consultarClienteJaCadastrado(DadosCliente.retornaCadastros(), auxCPF) == true){
 			System.out.println(MensagensNaTela.clienteJaCadastrado);
-			Principal.s.close();
 			return;
 		}
 
@@ -45,7 +44,7 @@ public class LogicaCliente {
 		do{
 			cliente.animais.add(LogicaAnimal.cadastrarAnimal(DadosCliente.qtdClientesCadastrados()));
 
-			System.out.println(MensagensNaTela.cadastrarMaisAnimal);
+			System.out.print(MensagensNaTela.cadastrarMaisAnimal);
 			opcaoCadastrarMaisAnimais = Integer.parseInt(Principal.s.nextLine());
 
 			if(opcaoCadastrarMaisAnimais == 1){
@@ -54,13 +53,14 @@ public class LogicaCliente {
 			}else {
 				if(opcaoCadastrarMaisAnimais != 2)
 					System.out.println(MensagensNaTela.valorIncorretoEntendereiNao);
-				Principal.contCadastrarCliente++;
 				flag = false;
 			}
 
 		}while(flag == true);
-		listaDeClientes.add(cliente);
-		DadosCliente.salvaCadastro(listaDeClientes);
+		//listaDeClientes.add(cliente);
+		if(DadosCliente.salvaCadastro(cliente))
+			System.out.println(MensagensNaTela.cadastradoRealizado);
+
 	}
 
 	public static void ListarUsuario(boolean flag) throws ClassNotFoundException{
@@ -73,16 +73,6 @@ public class LogicaCliente {
 		}
 		System.out.println();
 	}
-	/*public static int pegarIndice(int id) throws ClassNotFoundException{
-		int valor = -1;
-		ArrayList<Cliente> clientes = DadosCliente.retornaCadastros();
-		for(int i = 0; i < DadosCliente.qtdClientesCadastrados(); i++){
-			for(Cliente cli : clientes)
-				if(cli.getId() == id)
-					valor = i + 1;
-		}
-		return valor;
-	}*/
 
 	public static void atualizarCliente() throws ClassNotFoundException{
 		System.out.println(MensagensNaTela.tituloAtualizar);

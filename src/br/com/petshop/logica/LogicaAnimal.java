@@ -8,7 +8,7 @@ import br.com.petshop.dados.DadosAnimal;
 import br.com.petshop.entidades.Animal;
 
 public class LogicaAnimal {
-	static ArrayList<Animal> listaDeAnimais = new ArrayList<>();
+	//static ArrayList<Animal> listaDeAnimais = new ArrayList<>();
 	public static Integer cadastrarAnimal(int contCadastroCliente) throws ClassNotFoundException{
 		System.out.println(MensagensNaTela.tituloCadastrarAnimal);
 		Animal animal = new Animal();
@@ -30,8 +30,10 @@ public class LogicaAnimal {
 		System.out.print(MensagensNaTela.idade);
 		animal.setIdadeAnimal(Integer.parseInt(Principal.s.nextLine())); 
 
-		listaDeAnimais.add(animal);
-		DadosAnimal.salvaCadastro(listaDeAnimais);
+		//listaDeAnimais.add(animal);
+		DadosAnimal.salvaCadastro(animal);
+
+		System.out.println(MensagensNaTela.cadastradoRealizado);
 		return animal.getID();
 	}
 

@@ -8,16 +8,19 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import br.com.petshop.entidades.Animal;
+import br.com.petshop.entidades.Cliente;
 
 public class DadosAnimal {
 
-	public static boolean salvaCadastro(ArrayList<Animal> animais) {
+	public static boolean salvaCadastro(Animal animal) throws ClassNotFoundException {
 		boolean flag=true;
+		ArrayList <Animal> animalAux = retornaCadastros();
+		animalAux.add(animal);
 
 		try{
 			FileOutputStream fos = new FileOutputStream("animais.txt");
 			ObjectOutputStream oos = new ObjectOutputStream (fos);
-			oos.writeObject(animais);
+			oos.writeObject(animalAux);
 			oos.close();
 		}catch (IOException e){
 			flag=false;

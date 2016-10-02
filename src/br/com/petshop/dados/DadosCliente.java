@@ -11,13 +11,29 @@ import br.com.petshop.entidades.Cliente;
 
 public class DadosCliente {
 
-	public static boolean salvaCadastro(ArrayList<Cliente> clientes) {
+	public static boolean salvaCadastro(Cliente cliente) throws ClassNotFoundException {
 		boolean flag=true;
-
+		ArrayList <Cliente> clienteAux = retornaCadastros();
+		clienteAux.add(cliente);
+		
 		try{
 			FileOutputStream fos = new FileOutputStream("clientes.txt");
 			ObjectOutputStream oos = new ObjectOutputStream (fos);
-			oos.writeObject(clientes);
+			oos.writeObject(clienteAux);
+			oos.close();
+		}catch (IOException e){
+			flag=false;
+		}
+		return flag;
+	}
+	//arraylist
+	public static boolean salvaCadastro(ArrayList<Cliente> cliente) throws ClassNotFoundException {
+		boolean flag=true;
+		
+		try{
+			FileOutputStream fos = new FileOutputStream("clientes.txt");
+			ObjectOutputStream oos = new ObjectOutputStream (fos);
+			oos.writeObject(cliente);
 			oos.close();
 		}catch (IOException e){
 			flag=false;
