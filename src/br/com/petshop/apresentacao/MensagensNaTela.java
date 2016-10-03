@@ -5,21 +5,22 @@ public class MensagensNaTela {
 	public static String naoImplementado = "Ainda não implementado";
 
 	// Mensagens relacionadas a menu
+	public static String menuAutenticacao = "############ PetShop JKLR - Autenticação de usuário ##############";
 	public static String menuPrincipal = "############ PetShop JKLR ############\n"
 			+ "1 - Vendas\n"
-			+ "2 - Cadastro\n"
+			+ "2 - CRUD\n"
 			+ "0 - Sair\n"
 			+ "Digite sua opção: ";	
-	public static String menuCadastro = "\n############ Cadastro ############\n"
+	public static String menuCadastro = "\n############ CRUD ############\n"
 			+ "1 - Clientes\n"
 			+ "2 - Funcionários\n"
 			+ "3 - Fornecedor\n"
 			+ "0 - Voltar\n"
 			+ "Digite sua opção: ";
 	
-	public static String cadastroCliente = "\n############ Cadastro - Cliente ############\n";
-	public static String cadastroFornecedor = "\n############ Cadastro - Fornecedor ############\n";
-	public static String cadastroFuncionario = "\n############ Cadastro - Funcionário ############\n";
+	public static String cadastroCliente = "\n############ CRUD - Cliente ############\n";
+	public static String cadastroFornecedor = "\n############ CRUD - Fornecedor ############\n";
+	public static String cadastroFuncionario = "\n############ CRUD - Funcionário ############\n";
 	public static String operacoesCadastro = 
 			  "1 - Cadastrar\n"
 			+ "2 - Atualizar\n"
@@ -59,15 +60,20 @@ public class MensagensNaTela {
 	public static String qtd = "Quantidade: ";
 	public static String validade = "Validade: ";
 	public static String categoria = "Categoria (número inteiro / -1 se não souber quais são): ";
+	public static String login = "Login: ";
+	public static String senha = "Senha: ";
 
 	// Mensagens relacionadas a erros e avisos
 	public static String cadastradoRealizado = "-> Cadastro realizado.\n";
 	public static String adicionadoAoCarrinho = "-> Adicionado ao carrinho.\n";
 	public static String vendaConcluida = "-> Venda concluída.\n";
-	public static String clienteJaCadastrado = "Cliente já cadastrado";
-	public static String valorIncorreto = "Valor incorreto";
-	public static String valorIncorretoEntendereiNao = "Valor digitado incorreto, entenderei como não.";
-	public static String programaEncerrado =  "Programa encerrado.";
+	public static String clienteJaCadastrado = "-> Cliente já cadastrado";
+	public static String valorIncorreto = "-> Valor incorreto";
+	public static String valorIncorretoEntendereiNao = "-> Valor digitado incorreto, entenderei como não.";
+	public static String programaEncerrado =  "-> Programa encerrado.";
+	public static String falhaAutenticacao = ("---------------------------------------------------------\n"
+			+ "Usuário e/ou senha incorreto. Tente novamente! \n"
+			+ "---------------------------------------------------------");
 
 	//
 	public static String pularLinha = "\n";

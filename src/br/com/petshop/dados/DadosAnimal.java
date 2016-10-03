@@ -8,7 +8,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import br.com.petshop.entidades.Animal;
-import br.com.petshop.entidades.Cliente;
 
 public class DadosAnimal {
 
