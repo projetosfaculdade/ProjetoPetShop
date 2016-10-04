@@ -8,16 +8,18 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import br.com.petshop.entidades.Cliente;
+import br.com.petshop.utils.Utils;
 
 public class DadosCliente {
 
 	public static boolean salvaCadastro(Cliente cliente) throws ClassNotFoundException {
+		Utils.criarDiretorio();
 		boolean flag=true;
 		ArrayList <Cliente> clienteAux = retornaCadastros();
 		clienteAux.add(cliente);
-		
+
 		try{
-			FileOutputStream fos = new FileOutputStream("clientes.txt");
+			FileOutputStream fos = new FileOutputStream(Utils.nomeDiretorioDados() + "/clientes.txt");
 			ObjectOutputStream oos = new ObjectOutputStream (fos);
 			oos.writeObject(clienteAux);
 			oos.close();
@@ -28,10 +30,11 @@ public class DadosCliente {
 	}
 	//arraylist
 	public static boolean salvaCadastro(ArrayList<Cliente> cliente) throws ClassNotFoundException {
+		Utils.criarDiretorio();
 		boolean flag=true;
-		
+
 		try{
-			FileOutputStream fos = new FileOutputStream("clientes.txt");
+			FileOutputStream fos = new FileOutputStream(Utils.nomeDiretorioDados() + "/clientes.txt");
 			ObjectOutputStream oos = new ObjectOutputStream (fos);
 			oos.writeObject(cliente);
 			oos.close();
@@ -42,9 +45,10 @@ public class DadosCliente {
 	}
 	@SuppressWarnings("unchecked")
 	public static ArrayList<Cliente> retornaCadastros() throws ClassNotFoundException{
+		Utils.criarDiretorio();
 		ArrayList <Cliente> clientes = new ArrayList<>();
 		try{
-			FileInputStream fis = new FileInputStream("clientes.txt");
+			FileInputStream fis = new FileInputStream(Utils.nomeDiretorioDados() + "/clientes.txt");
 			ObjectInputStream ois = new ObjectInputStream (fis);
 			clientes = (ArrayList<Cliente>) ois.readObject();
 			ois.close();
@@ -53,12 +57,13 @@ public class DadosCliente {
 		}
 		return clientes;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public static int qtdClientesCadastrados() throws ClassNotFoundException{
+		Utils.criarDiretorio();
 		ArrayList <Cliente> clientes = new ArrayList<>();
 		try{
-			FileInputStream fis = new FileInputStream("clientes.txt");
+			FileInputStream fis = new FileInputStream(Utils.nomeDiretorioDados() + "/clientes.txt");
 			ObjectInputStream ois = new ObjectInputStream (fis);
 			clientes = (ArrayList<Cliente>) ois.readObject();
 			ois.close();
@@ -67,5 +72,5 @@ public class DadosCliente {
 		}
 		return clientes.size();
 	}
-	
+
 }

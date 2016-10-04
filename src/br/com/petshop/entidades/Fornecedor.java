@@ -63,5 +63,5 @@ public class Fornecedor implements Serializable {
 	public String toString(){
 		return "CNPJ: " + getCnpj() + ", Razão Social: " + getRazaoSocial() + ", Nome Fantasia: " + getNomeFantasia() + ", Telefone: " + getTelefone() + ", Email: " + getEmail();
 	}
-	
+
 }

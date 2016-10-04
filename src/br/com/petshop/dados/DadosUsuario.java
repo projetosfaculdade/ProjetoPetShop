@@ -9,16 +9,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.com.petshop.entidades.Usuario;
+import br.com.petshop.utils.Utils;
 
 @SuppressWarnings("serial")
 public class DadosUsuario implements Serializable{
 
 	public static boolean salvaCadastro(Usuario usuario) throws ClassNotFoundException{
+		Utils.criarDiretorio();
 		boolean flag=true;
 		ArrayList <Usuario> usuarioAux = retornaCadastros();
 		usuarioAux.add(usuario);
 		try{
-			FileOutputStream fos = new FileOutputStream ("usuario.txt");
+			FileOutputStream fos = new FileOutputStream (Utils.nomeDiretorioDados() + "/usuario.txt");
 			ObjectOutputStream oos = new ObjectOutputStream (fos);
 			oos.writeObject(usuarioAux);
 			oos.close();
@@ -29,10 +31,11 @@ public class DadosUsuario implements Serializable{
 	}
 	@SuppressWarnings("unchecked")
 	public static ArrayList<Usuario> retornaCadastros() throws ClassNotFoundException{
+		Utils.criarDiretorio();
 		ArrayList <Usuario> listaUsuarios = new ArrayList<>();
 
 		try{
-			FileInputStream fis = new FileInputStream ("usuario.txt");
+			FileInputStream fis = new FileInputStream (Utils.nomeDiretorioDados() + "/usuario.txt");
 			ObjectInputStream ois = new ObjectInputStream (fis);
 			listaUsuarios =  (ArrayList <Usuario>) ois.readObject();
 			ois.close();

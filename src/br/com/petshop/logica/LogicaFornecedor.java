@@ -10,7 +10,7 @@ public class LogicaFornecedor {
 
 	public static void cadastro(){
 		ArrayList <Fornecedor> listaFornecedores = new ArrayList<>();
-		
+
 		int op=0;
 		do{
 			listaFornecedores.add(formulario());
@@ -18,7 +18,7 @@ public class LogicaFornecedor {
 			op = Integer.parseInt(Principal.s.nextLine());
 
 		}while(op==1);
-		
+
 		if(DadosFornecedor.salvaCadastro(listaFornecedores)){
 			id++;
 			System.out.println("--------------- CADASTRADO EFETUADO COM SUCESSO ----------------");

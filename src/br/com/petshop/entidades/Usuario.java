@@ -9,7 +9,7 @@ public class Usuario implements Serializable{
 	private String senha;
 	private String grupo;
 	private boolean status;
-	
+
 	public Usuario(String login, String senha){
 		this.login = login;
 		this.senha = senha;

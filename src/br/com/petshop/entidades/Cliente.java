@@ -6,22 +6,26 @@ import java.util.ArrayList;
 @SuppressWarnings("serial")
 public class Cliente extends Pessoa implements Serializable{
 
-	public ArrayList<Integer> animais =  new ArrayList<>();
+	private ArrayList<Integer> animais =  new ArrayList<>();
 
-	
+
 	public static boolean consultarClienteJaCadastrado(ArrayList<Cliente> cli, String auxCPF){
 		for(Cliente clientes : cli)
 			if(clientes.getCpf().equals(auxCPF))
 				return true;
 		return false;
 	}
-	
+
 	public String toString(Cliente cli){
 		return "ID: " + cli.getId() + ", Nome: " + cli.getNome() + ", CPF: " + cli.getCpf() +", Endereço: " + cli.getEndereco() +", Telefone: " + cli.getTelefone();
 	}
 
 	public ArrayList<Integer> getAnimais() {
 		return animais;
+	}
+
+	public void setAnimais(int animais) {
+		this.animais.add(animais);
 	}
 
 	@Override
@@ -107,5 +111,5 @@ public class Cliente extends Pessoa implements Serializable{
 		// TODO Auto-generated method stub
 		this.endereco = endereco;
 	}
-	
+
 }

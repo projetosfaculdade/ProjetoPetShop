@@ -26,7 +26,7 @@ public class TelaCadastroCliente {
 				System.out.println(MensagensNaTela.naoImplementado);
 				break;
 			case LISTAR:
-				System.out.print(MensagensNaTela.mostrarAnimais);
+				System.out.print(MensagensNaTela.listarAnimais);
 				boolean flag = false;
 				byte opcaoMostrarAnimais = Byte.parseByte(Principal.s.nextLine());
 				if(opcaoMostrarAnimais == 1)

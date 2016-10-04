@@ -17,24 +17,26 @@ public class MensagensNaTela {
 			+ "3 - Fornecedor\n"
 			+ "0 - Voltar\n"
 			+ "Digite sua opção: ";
-	
+
 	public static String cadastroCliente = "\n############ CRUD - Cliente ############\n";
 	public static String cadastroFornecedor = "\n############ CRUD - Fornecedor ############\n";
 	public static String cadastroFuncionario = "\n############ CRUD - Funcionário ############\n";
 	public static String operacoesCadastro = 
-			  "1 - Cadastrar\n"
-			+ "2 - Atualizar\n"
-			+ "3 - Excluir\n"
-			+ "4 - Listar\n"
-			+ "0 - Voltar\n"
-			+ "Digite sua opção: ";
+			"1 - Cadastrar\n"
+					+ "2 - Atualizar\n"
+					+ "3 - Excluir\n"
+					+ "4 - Listar\n"
+					+ "0 - Voltar\n"
+					+ "Digite sua opção: ";
 	public static String menuVendas = "\n############ Menu Vendas ############\n"
 			+ "1 - Iniciar venda\n"
 			+ "2 - Listar vendas\n"
 			+ "0 - Voltar\n"
 			+ "Digite sua opção: ";
 	public static String cadastrarMaisAnimal = "Deseja cadastrar mais um animal para o mesmo cliente?(1 - sim, 2 - não): ";
-	public static String mostrarAnimais = "Deseja também mostrar os animais de cada cliente?(1 - Sim, 2 - Não): ";
+	public static String cadastrarMaisProdutos = "Deseja cadastrar mais um produto(1 - Sim, 2 - Não)?\nOpção: ";
+	public static String listarAnimais = "Deseja listar também os animais de cada cliente?(1 - Sim, 2 - Não): ";
+	public static String listarProdutos = "Deseja listar também os produtos(1 - Sim, 2 - Não)?\nOpção: ";
 
 	// Mensagens relacionadas a título
 	public static String tituloCadastrarProprietario = "\n############ Cadastro de proprietário ############";

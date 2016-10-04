@@ -58,7 +58,7 @@ public class Funcionario extends Pessoa{
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
-	
+
 	public String getCargo() {
 		return cargo;
 	}
@@ -71,7 +71,7 @@ public class Funcionario extends Pessoa{
 	public void setSalario(double salario) {
 		this.salario = salario;
 	}
-	
+
 	@Override
 	public String getTelefone() {
 		return telefone;

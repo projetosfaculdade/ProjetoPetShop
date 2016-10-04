@@ -8,14 +8,12 @@ import br.com.petshop.entidades.Cliente;
 
 public class LogicaCliente {
 
-	static ArrayList<Cliente> listaDeClientes = new ArrayList<>();
 	static int contCadastroCliente = 0;
 
 	public static void CadastrarUsuario() throws ClassNotFoundException{
 		int opcaoCadastrarMaisAnimais;
 		boolean flag = false;
 		Cliente cliente = new Cliente();
-		//cliente.setId(listaDeClientes.size());
 		cliente.setId(DadosCliente.qtdClientesCadastrados());
 
 		System.out.print(MensagensNaTela.cpf);
@@ -42,7 +40,7 @@ public class LogicaCliente {
 
 
 		do{
-			cliente.animais.add(LogicaAnimal.cadastrarAnimal(DadosCliente.qtdClientesCadastrados()));
+			cliente.setAnimais((LogicaAnimal.cadastrarAnimal(DadosCliente.qtdClientesCadastrados())));
 
 			System.out.print(MensagensNaTela.cadastrarMaisAnimal);
 			opcaoCadastrarMaisAnimais = Integer.parseInt(Principal.s.nextLine());
@@ -57,10 +55,8 @@ public class LogicaCliente {
 			}
 
 		}while(flag == true);
-		//listaDeClientes.add(cliente);
 		if(DadosCliente.salvaCadastro(cliente))
 			System.out.println(MensagensNaTela.cadastradoRealizado);
-
 	}
 
 	public static void ListarUsuario(boolean flag) throws ClassNotFoundException{
@@ -69,7 +65,7 @@ public class LogicaCliente {
 
 			System.out.println(cli.toString(cli));
 			if(flag == true)
-				LogicaAnimal.ListarAnimal(cli.animais, cli.animais.size());
+				LogicaAnimal.ListarAnimal(cli.getAnimais(), cli.getAnimais().size());
 		}
 		System.out.println();
 	}
@@ -85,7 +81,6 @@ public class LogicaCliente {
 			if(idUsuarioAtualizar == -1)
 				ListarUsuario(false);
 		}while(idUsuarioAtualizar < 0 || idUsuarioAtualizar > DadosCliente.qtdClientesCadastrados());
-		//int valorIndiceClienteAtual = pegarIndice(idUsuarioAtualizar);
 		System.out.print(MensagensNaTela.nome);
 		clientes.get(idUsuarioAtualizar).setNome(Principal.s.nextLine());
 

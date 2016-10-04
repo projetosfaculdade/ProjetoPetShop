@@ -7,30 +7,37 @@ import br.com.petshop.apresentacao.Principal;
 import br.com.petshop.dados.DadosVendas;
 import br.com.petshop.entidades.Produto;
 import br.com.petshop.entidades.Vendas;
+import br.com.petshop.utils.Utils;
 
 public class LogicaVenda {
 
-	//static Vendas listaDeVendas = new Vendas();
 	public static void cadastrarVenda() throws ClassNotFoundException{
 		System.out.println(MensagensNaTela.tituloVenda);
 		Vendas venda = new Vendas();
 		Produto listaProdutos;
-		//int variavel = venda.listaProdutos.size();
 		byte opcaoCadastrarVenda;
 
 		venda.setId(DadosVendas.qtdVendasCadastradas());
 		do{
 			listaProdutos = new Produto();
-			listaProdutos.setId(venda.listaProdutos.size());
+			listaProdutos.setId(venda.getListaProdutos().size());
 
 			System.out.print(MensagensNaTela.nome);
 			listaProdutos.setNome(Principal.s.nextLine()); 
 
-			System.out.print(MensagensNaTela.valor);
-			listaProdutos.setValor(Double.parseDouble(Principal.s.nextLine().replace(",", "."))); 
+			double valor;
+			do{
+				System.out.print(MensagensNaTela.valor);
+				valor = Double.parseDouble(Principal.s.nextLine().replace(",", "."));
+				listaProdutos.setValor(valor);
 
-			System.out.print(MensagensNaTela.qtd);
-			listaProdutos.setQtd(Integer.parseInt(Principal.s.nextLine())); 
+			}while(!Utils.maiorAZero(valor));
+
+			do{
+				System.out.print(MensagensNaTela.qtd);
+				listaProdutos.setQtd(Integer.parseInt(Principal.s.nextLine())); 
+
+			}while(!Utils.maiorAZero(valor));
 
 			int categoria;
 			do{
@@ -38,27 +45,25 @@ public class LogicaVenda {
 				categoria = Integer.parseInt(Principal.s.nextLine());
 				if(categoria == -1){
 					System.out.print("[");
-					for(int i = 0; i < Produto.listaCategorias.length; i++){
-						if(i == Produto.listaCategorias.length - 1)
-							System.out.print(i + " - " + Produto.listaCategorias[i]);
+					for(int i = 0; i < Produto.getListaCategorias().length; i++){
+						if(i == Produto.getListaCategorias().length - 1)
+							System.out.print(i + " - " + Produto.getListaCategorias()[i]);
 						else
-							System.out.print(i + " - " + Produto.listaCategorias[i] + " / ");
+							System.out.print(i + " - " + Produto.getListaCategorias()[i] + " / ");
 					}
 					System.out.println("]\n");
 				}else;
-			}while(categoria >= Produto.listaCategorias.length || categoria < 0);
+			}while(categoria >= Produto.getListaCategorias().length || categoria < 0);
 
 			System.out.println(MensagensNaTela.adicionadoAoCarrinho);
 
-			System.out.print("Deseja cadastrar mais um produto(1 - Sim, 2 - Não)?\n"
-					+ "Opção: ");
+			System.out.print(MensagensNaTela.cadastrarMaisProdutos);
 			opcaoCadastrarVenda = Byte.parseByte(Principal.s.nextLine());
 
 			listaProdutos.setCategoria(categoria);
-			venda.listaProdutos.add(listaProdutos);
+			venda.setListaProdutos(listaProdutos);;
 
 		}while(opcaoCadastrarVenda != 2);
-		//listaDeVendas.add(venda);
 
 		if(DadosVendas.salvaCadastro(venda))
 			System.out.println(MensagensNaTela.vendaConcluida);
@@ -67,18 +72,16 @@ public class LogicaVenda {
 
 	public static void listarVendas() throws ClassNotFoundException{
 		byte opcaoListarCompleto;
-		System.out.print("Deseja listar também os produtos(1 - Sim, 2 - Não)?\n"
-				+ "Opção: ");
+		System.out.print(MensagensNaTela.listarProdutos);
 		opcaoListarCompleto = Byte.parseByte(Principal.s.nextLine());
 		System.out.println(MensagensNaTela.tituloListar);
 
 		for(Vendas ven : DadosVendas.retornaCadastros()){
-			System.out.println("ID: " + ven.getId() + ", Total da compra: " + retornaValorCompra(ven.getId()));
+			System.out.printf("ID: " +  ven.getId() + ", Total da compra: R$%.02f\n", retornaValorCompra(ven.getId()));
 			if(opcaoListarCompleto == 1){
-				for(int i = 0; i < ven.listaProdutos.size(); i++)
-					System.out.println("\t-> " + ven.listaProdutos.get(i).toString());
+				for(int i = 0; i < ven.getListaProdutos().size(); i++)
+					System.out.println("\t-> " + ven.getListaProdutos().get(i).toString());
 			}
-
 		}
 		System.out.println();
 	}
@@ -86,8 +89,8 @@ public class LogicaVenda {
 	public static double retornaValorCompra(int i) throws ClassNotFoundException{
 		ArrayList <Vendas> vendas = DadosVendas.retornaCadastros();
 		double valor = 0;
-		for(int j = 0; j < vendas.get(i).listaProdutos.size(); j++){
-			valor +=  (vendas.get(i).listaProdutos.get(j).getValor() * vendas.get(i).listaProdutos.get(j).getQtd());
+		for(int j = 0; j < vendas.get(i).getListaProdutos().size(); j++){
+			valor +=  (vendas.get(i).getListaProdutos().get(j).getValor() * vendas.get(i).getListaProdutos().get(j).getQtd());
 		}
 
 		return valor;

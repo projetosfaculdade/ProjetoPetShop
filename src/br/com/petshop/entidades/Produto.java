@@ -5,15 +5,23 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Produto implements Serializable{
 
-	public int id;
-	public String nome;
-	public double valor;
-	public int qtd;
-	public int categoria;
-	public static String[] listaCategorias = {
+	private int id;
+	private String nome;
+	private double valor;
+	private int qtd;
+	private int categoria;
+	private static String[] listaCategorias = {
 			"Ração", "Perfumaria", "Veterinária", "Banho&Tosa", "Petisco",
-			"Brinquedo", "Higiene", "Coleira", "Vestimenta"
+			"Brinquedo", "Higiene", "Coleira", "Vestimenta", "Farmácia"
 	};
+
+	public static String[] getListaCategorias() {
+		return listaCategorias;
+	}
+
+	public static void setListaCategorias(String[] listaCategorias) {
+		Produto.listaCategorias = listaCategorias;
+	}
 
 	static String retornarCategoria(int categoria){
 		String valor = "Categoria não cadastrada";
